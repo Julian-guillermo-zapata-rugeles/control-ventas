@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" href="{{ url_for('static',filename='bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
+  </head>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+              <img src="{{ url_for('static',filename='logo.png') }}" height="40px" alt=""> SIRIUS A
+            </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item ">
+              <a class="nav-link active" href="#">INVENTARIOS</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="vender">VENDER</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="reporte">REPORTE</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="analisis">ANÁLISIS</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <br>
+<br><br>
+
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar" border-color="black">
+
+    <table class="table" id="myTable" border="4">
+      <tr class="header">
+        <th >Numero</th>
+        <th>Disponible</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+      </tr>
+     {%- for row in items %}
+        <tr>
+        {% set count = {'value': 0} %}
+        {%- for sub in row %}
+          {% if count.update({'value': (count.value + 1)}) %} {% endif %}
+              {% if count.value==2 %}
+                  {% if sub < 5 %}
+                    <td bgcolor="#ffb6b6" color="white">{{sub}}</td>
+                  {% elif sub >4 and sub<10%}
+                    <td bgcolor="#ffeeb6">{{sub}}</td>
+                  {% else %}
+                    <td bgcolor="#c3ffcd" color="white">{{sub}}</td>
+                  {% endif %}
+              {% else %}
+              <td>{{sub}}</td>
+          {% endif %}
+        {%- endfor %}
+        </tr>
+     {%- endfor %}
+   </table>
+   <script src="{{url_for('static', filename='search.js')}}"></script>

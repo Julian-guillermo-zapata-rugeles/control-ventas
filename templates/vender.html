@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" href="{{ url_for('static',filename='bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
+  </head>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+              <img src="{{ url_for('static',filename='logo.png') }}" height="40px" alt=""> SIRIUS A
+            </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item ">
+              <a class="nav-link" href="inventario">INVENTARIOS</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link active" href="#">VENDER</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="reporte">REPORTE</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="analisis">ANÁLISIS</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+<br><br>
+
+    <div class="container" width=100%>
+      <div class="d-flex flex-wrap" width=100%>
+        <div class="col-sm">
+          <button class="btn btn-primary" onclick=window.location.href="#"> Corregir </button>
+        </div>
+        <div class="col-sm">
+          <button class="btn btn-dark" onclick=window.location.href="/full"> <b>Limpiar</b>  </button>
+        </div>
+        <div class="col-sm">
+          <button class="btn btn-success" onclick=window.location.href="/make"> Confirmar </button>
+        </div>
+      </div>
+    </div>
+    <hr>
+<div class="container" width=100%>
+  <div class="d-flex flex-wrap">
+    <form class="formulario" action="public" method="post">
+        <select class="padre mdb-select md-form" searchable="Search here.." name="producto">
+          {%- for element in productos %}
+             <option>{{"({})---({})---({})---({})".format(element[0],element[1],element[2],element[3])}} </option>
+                {%- endfor %}
+                    </select>
+        <select class="cantidad" name="cantidad" width=100%>
+          {%- for column in range(1,11) %}
+             <option>{{ column }}</option>
+                {%- endfor %}
+              </select> &nbsp&nbsp
+                    <input class="btn-warning"id='submit' type='submit' name = 'action'  value = 'Agregar'></form>
+                  </div>
+                </div>
+                <hr>
+<div class="container" width=100%>
+  <div class="d-flex flex-wrap">
+<table border="4" width=100%>
+ <thead>
+  {%- for column in encabezado %}
+     <th>{{ column }}</th>
+  {%- endfor %}
+ </thead>
+
+ <tbody>
+ {%- for row in cache %}
+    <tr>
+    {% set counter=0 %}
+    {%- for sub in row %}
+       <td>{{sub}}</td>
+    {%- endfor %}
+    </tr>
+ {%- endfor %}
+ </tbody>
+ </table>
+ </div></div>
+ <br>
+ <center>
+<h1>Total : {{ total }} </h1>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+              <img src="{{ url_for('static',filename='logo.png') }}" height="40px" alt=""> SIRIUS A
+            </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item ">
+              <a class="nav-link" href="inventario">INVENTARIOS</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="vender">VENDER</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="reporte">REPORTE</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="analisis">ANÁLISIS</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+        <center>{{ msg }}</center>
+        <hr>
+        <center>
+          <img src="{{ url_for('static',filename='mayorventa.png') }}" class="img-fluid" alt="Responsive image">
+          <img src="{{ url_for('static',filename='vendidos.png') }}" class="img-fluid" alt="Responsive image">
+
+
+    <!--
+    <div class="container" width=100%>
+      <div class="d-flex flex-wrap flex-row-reverse">
+        <div class="col-sm">
+          <button class="btn btn-primary"> Inventario </button>
+        </div>
+        <div class="col-sm">
+          <button class="btn btn-primary"> Ventas </button>
+        </div>
+        <div class="col-sm">
+          <button class="btn btn-primary"> Reportes  </button>
+        </div>
+      </div>
+    </div>
+  -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/popper.js/dist/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  </body>
+</html>
